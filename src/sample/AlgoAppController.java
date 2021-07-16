@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.*;
@@ -137,10 +136,6 @@ public class AlgoAppController {
         }
 
     }
-    public ArrayList<String> list(){
-
-        return null;
-    }
     public HashMap<String, String> map(){
 
         /* This is how to declare HashMap */
@@ -200,9 +195,6 @@ public class AlgoAppController {
     public void addRow15(ActionEvent actionEvent) {
         myHBox15.getChildren().add(new TextField());
     }
-    public void deleteColumn(ActionEvent actionEvent) {
-    }
-    public void addColumn(ActionEvent actionEvent) {
-    }
+
 
 }
