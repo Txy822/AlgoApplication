@@ -196,5 +196,4 @@ public class AlgoAppController {
         myHBox15.getChildren().add(new TextField());
     }
 
-
 }
