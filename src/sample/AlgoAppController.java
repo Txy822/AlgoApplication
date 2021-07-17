@@ -74,6 +74,8 @@ public class AlgoAppController {
 
     @FXML
     Button result;
+    @FXML
+    Button reset;
 
     int i=0;
     int menCounter=0;
@@ -81,6 +83,11 @@ public class AlgoAppController {
 
 
     public void AddHbox(ActionEvent actionEvent) {
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
+        {
+            show_error.setText("fill column and row");
+            return;
+        }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
         menCounter++;
@@ -149,6 +156,11 @@ public class AlgoAppController {
         hmap.put("m5", "Anuj");
 
      return  hmap;
+    }
+    public void reset (){
+        myVBox1.getChildren().clear();
+        resultShowCounter=0;
+        menCounter=0;
     }
     public void addRow1(ActionEvent actionEvent) {
         myHBox1.getChildren().add(new TextField());

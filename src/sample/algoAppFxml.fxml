@@ -40,105 +40,38 @@
     <bottom>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="show_error2" textFill="#f00303" />
+                <Label fx:id="show_error2" prefHeight="17.0" prefWidth="123.0" textFill="#f00303" />
             </children>
             <padding>
                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
             </padding>
         </HBox>
     </bottom>
-   <right>
-      <VBox fx:id="myVBox" prefHeight="612.0" prefWidth="32.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="addRow" mnemonicParsing="false" onAction="#addRow1" prefHeight="3.0" prefWidth="24.0" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin></Button>
-            <Button fx:id="deleteRow" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addRow2" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="addColumn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addRow3" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn" layoutX="10.0" layoutY="46.0" mnemonicParsing="false" onAction="#addRow4" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn1" layoutX="10.0" layoutY="128.0" mnemonicParsing="false" onAction="#addRow5" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn11" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" onAction="#addRow6" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn111" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#addRow7" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn1111" layoutX="10.0" layoutY="206.0" mnemonicParsing="false" onAction="#addRow8" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn11111" layoutX="10.0" layoutY="232.0" mnemonicParsing="false" onAction="#addRow9" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn111111" layoutX="10.0" layoutY="258.0" mnemonicParsing="false" onAction="#addRow10" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn1111111" layoutX="10.0" layoutY="284.0" mnemonicParsing="false" onAction="#addRow11" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn11111111" layoutX="10.0" layoutY="380.0" mnemonicParsing="false" onAction="#addRow12" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn111111111" layoutX="10.0" layoutY="406.0" mnemonicParsing="false" onAction="#addRow13" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn1111111111" layoutX="10.0" layoutY="432.0" mnemonicParsing="false" onAction="#addRow14" text="+">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="deleteColumn11111111111" layoutX="10.0" layoutY="458.0" mnemonicParsing="false" onAction="#addRow15" text="+">
-               <VBox.margin>
-                  <Insets top="13.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
-   </right>
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="629.0" prefWidth="167.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="char_number_of_column" promptText="Column" />
-            <TextField fx:id="char_number_of_row" promptText="Row" />
-            <Label fx:id="show_error" prefHeight="21.0" prefWidth="116.0" textFill="#e90a0a" />
-            <Button fx:id="result" mnemonicParsing="false" onAction="#result" text="Show Result" />
-            <Label prefHeight="482.0" prefWidth="99.0" text="   Men(Proposer)" />
-            <Button mnemonicParsing="false" onAction="#AddHbox" text="Add Row" />
+            <TextField fx:id="char_number_of_column" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin></TextField>
+            <TextField fx:id="char_number_of_row" prefHeight="26.0" prefWidth="167.0" promptText="Enter number of Women">
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin></TextField>
+            <Label fx:id="show_error" prefHeight="21.0" prefWidth="174.0" textFill="#e90a0a" />
+            <Button mnemonicParsing="false" onAction="#AddHbox" text="Fill Row Table">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Button>
+            <Button fx:id="result" mnemonicParsing="false" onAction="#result" text="Show Gale-Shapley Result">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Button>
+            <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Reset">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
          </children></VBox>
    </left>
    <center>
