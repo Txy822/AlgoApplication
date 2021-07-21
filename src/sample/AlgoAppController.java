@@ -1,13 +1,15 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class AlgoAppController {
 
@@ -23,12 +25,13 @@ public class AlgoAppController {
 
     @FXML
     private VBox myVBox;
-    @FXML
-    private Button result;
-    @FXML
-    private Button reset;
-    @FXML
-    private Button changeScene;
+
+//    @FXML
+//    private Button result;
+//    @FXML
+//    private Button reset;
+//    @FXML
+//    private Button changeScene;
 
     private int int_number_of_column;
     private int int_number_of_row;
@@ -36,11 +39,13 @@ public class AlgoAppController {
     private int countNumberOfButtonPressed_womenPref=0;
     private int resultShowCounter=0;
 
+    private GaleShapley gs;
+
     private TextField [][] menPrefTextFieldArray;
     private TextField [][] womenPrefTextFieldArray;
 
 
-    public void AddHboxForMenPreference(ActionEvent actionEvent) {
+    public void AddHboxForMenPreference() {
 
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
@@ -72,14 +77,12 @@ public class AlgoAppController {
                     menPrefTextFieldArray[i][j].setPromptText(j + " Rank Woman");
                 }
                 hb.getChildren().add(menPrefTextFieldArray[i][j]);
-
             }
             myVBox.getChildren().add(hb);
-
         }
     }
 
-    public void AddHboxForWomenPreference(ActionEvent actionEvent) {
+    public void AddHboxForWomenPreference() {
 
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
@@ -111,22 +114,22 @@ public class AlgoAppController {
                     womenPrefTextFieldArray[i][j].setPromptText(j + " Rank Man");
                 }
                 hb.getChildren().add(womenPrefTextFieldArray[i][j]);
-
             }
             myVBox.getChildren().add(hb);
         }
     }
-    public void result(ActionEvent actionEvent){
+    @FXML
+    public void result(HashMap<String, String> map){
 
         resultShowCounter++;
         if(resultShowCounter>1){
             return;
         }
-        HashMap<String, String> map=map();
+        //HashMap<String, String> map=map();
 
-        Set set = map.entrySet();
+        Set<Map.Entry<String, String>> set = map.entrySet();
 
-        Iterator iterator = set.iterator();
+        Iterator<Map.Entry<String, String>> iterator = set.iterator();
 
         for(int i=0;i<map.size();i++){
             HBox hb= new HBox();
@@ -143,7 +146,7 @@ public class AlgoAppController {
         }
 
     }
-    public void showGale_shapley(ActionEvent actionEvent){
+    public void showGale_shapley(){
         String[][] menPref = new String[int_number_of_row][int_number_of_column];
         String[] men = new String[int_number_of_row];
         String[][] womenPref = new String[int_number_of_row][int_number_of_column];
@@ -165,18 +168,14 @@ public class AlgoAppController {
                     else {
                         if (j == 0) {
                             men[countMen] = menPrefTextFieldArray[i][j].getText();
-                            System.out.println("Men " + menPrefTextFieldArray[i][j].getText());
                             countMen++;
                         }
                         else {
                             menPref[i][j - 1] = menPrefTextFieldArray[i][j].getText();
-                            System.out.println("table " + menPrefTextFieldArray[i][j].getText());
-                            //countWomen++;
                         }
                     }
                 }
             }
-
         }
         if(womenPrefTextFieldArray==null || womenPrefTextFieldArray.length==0){
             show_error_two.setText("Please enter Women preference");
@@ -201,8 +200,9 @@ public class AlgoAppController {
                 }
             }
         }
-         GaleShapley gs= new GaleShapley(men, women, menPref, womenPref);
+         gs= new GaleShapley(men, women, menPref, womenPref);
          gs.calcMatches();
+         result(gs.men_women_match());;
          show_error_two.setText("");
     }
     public HashMap<String, String> map(){
@@ -221,6 +221,7 @@ public class AlgoAppController {
     }
     public void reset (){
         myVBox.getChildren().clear();
+        gs.men_women_match().clear();
         resultShowCounter=0;
         countNumberOfButtonPressed_menPref=0;
         countNumberOfButtonPressed_womenPref=0;

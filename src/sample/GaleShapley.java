@@ -7,6 +7,7 @@ package sample;
  **/
 
 
+import java.util.HashMap;
 
 /** Class GaleShapley **/
 
@@ -118,7 +119,7 @@ public class GaleShapley
 
         }
 
-        printCouples();
+        men_women_match();
 
     }
 
@@ -180,20 +181,19 @@ public class GaleShapley
 
     /** print couples **/
 
-    public void printCouples()
-
-    {
-
-        System.out.println("Couples are : ");
-
-        for (int i = 0; i < N; i++)
-
-        {
-
-            System.out.println(womenPartner[i] +" "+ women[i]);
-
-        }
-
+    public HashMap<String, String> men_women_match() {
+        HashMap<String, String> hmap = new HashMap<String, String>();
+//
+//            /*Adding elements to HashMap*/
+//            hmap.put("me1", "Chaitanya");
+//            hmap.put("m2", "Rahul");
+//            hmap.put("m3", "Singh");
+//            hmap.put("me4", "Ajeet");
+//            hmap.put("m5", "Anuj");
+         for (int i = 0; i < N; i++){
+            hmap.put(womenPartner[i],women[i]);
+         }
+         return hmap;
     }
 
 //    /** main function **/
