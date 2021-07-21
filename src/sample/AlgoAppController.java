@@ -8,6 +8,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.*;
 
@@ -77,12 +86,34 @@ public class AlgoAppController {
     @FXML
     Button reset;
 
+    @FXML
+    Button changeScene;
+
     int i=0;
     int menCounter=0;
+    int womenCounter=0;
     int resultShowCounter=0;
 
 
-    public void AddHbox(ActionEvent actionEvent) {
+
+
+
+    private int N, engagedCount;
+
+    private String[][] menPref;
+
+    private String[][] womenPref;
+
+    private String[] men;
+
+    private String[] women;
+
+    private String[] womenPartner;
+
+    private boolean[] menEngaged;
+
+    public void AddHboxForMenPreference(ActionEvent actionEvent) {
+
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
             show_error.setText("fill column and row");
@@ -91,7 +122,7 @@ public class AlgoAppController {
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
         menCounter++;
-        if(menCounter>int_number_of_row){
+        if(menCounter>1){
             show_error2.setText("Ii is Max");
             return;
         }
@@ -101,20 +132,73 @@ public class AlgoAppController {
             return;
         }
         show_error.setText("");
-        //TextField txarray[]= new TextField[int_number_of_column];
-        HBox hb= new HBox();
-        for(int i=0;i<=int_number_of_row;i++){
-            TextField txtFiled= new TextField();
-            if(i==0) {
-                txtFiled.setPromptText(" Men "+menCounter);
-                hb.getChildren().add(txtFiled);
+        menPref= new String[int_number_of_row][int_number_of_column];
+        men=new String[int_number_of_row];
+        for(int i=0;i<int_number_of_row;i++) {
+            HBox hb= new HBox();
+            int columnCounter=0;
+            for (int j = 0; j <= int_number_of_row; j++) {
+                TextField txtFiled = new TextField();
+                int countMen=i+1;
+                if (j == 0) {
+                    txtFiled.setPromptText(" Man " + countMen);
+                    hb.getChildren().add(txtFiled);
+                    men[i]=txtFiled.getText();
+                } else {
+                    txtFiled.setPromptText(j + " Rank Woman");
+                    hb.getChildren().add(txtFiled);
+                    menPref[i][columnCounter] = txtFiled.getText();
+                    columnCounter++;
+                }
+
             }
-            else{
-                txtFiled.setPromptText(i+" Rank Woman");
-                hb.getChildren().add(txtFiled);
-            }
+            myVBox1.getChildren().add(hb);
+
         }
-        myVBox1.getChildren().add(hb);
+    }
+    public void AddHboxForWomenPreference(ActionEvent actionEvent) {
+
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
+        {
+            show_error.setText("fill column and row");
+            return;
+        }
+        int_number_of_column=Integer.parseInt(char_number_of_column.getText());
+        int_number_of_row=Integer.parseInt(char_number_of_row.getText());
+        womenCounter++;
+        if(womenCounter>1){
+            show_error2.setText("Ii is Max");
+            return;
+        }
+
+        if(int_number_of_column !=int_number_of_row){
+            show_error.setText("Row and Column must be equal");
+            return;
+        }
+        show_error.setText("");
+        womenPref= new String[int_number_of_row][int_number_of_column];
+        women=new String[int_number_of_row];
+        for(int i=0;i<int_number_of_row;i++) {
+            HBox hb = new HBox();
+            int columnCounter = 0;
+            for (int j = 0; j <= int_number_of_row; j++) {
+                TextField txtFiled = new TextField();
+                int countMen = i + 1;
+                if (j == 0) {
+                    txtFiled.setPromptText(" Woman " + countMen);
+                    hb.getChildren().add(txtFiled);
+                    women[i] = txtFiled.getText();
+                } else {
+                    txtFiled.setPromptText(j + " Rank Man");
+
+                    hb.getChildren().add(txtFiled);
+                    womenPref[i][columnCounter] = txtFiled.getText();
+                    columnCounter++;
+                }
+            }
+            myVBox1.getChildren().add(hb);
+
+        }
     }
     public void result(ActionEvent actionEvent){
 
@@ -142,6 +226,11 @@ public class AlgoAppController {
             myVBox1.getChildren().add(hb);
         }
 
+
+    }
+    public void showGale_shapley(ActionEvent actionEvent){
+        GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
+        gs.calcMatches();
     }
     public HashMap<String, String> map(){
 
@@ -161,6 +250,12 @@ public class AlgoAppController {
         myVBox1.getChildren().clear();
         resultShowCounter=0;
         menCounter=0;
+        womenCounter=0;
+    }
+    public void changeSceneMethod(){
+        Stage stage =new Stage();
+        FirstGUI gu=new FirstGUI();
+        gu.start(stage);
     }
     public void addRow1(ActionEvent actionEvent) {
         myHBox1.getChildren().add(new TextField());

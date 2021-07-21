@@ -59,19 +59,26 @@
                   <Insets right="10.0" />
                </VBox.margin></TextField>
             <Label fx:id="show_error" prefHeight="21.0" prefWidth="174.0" textFill="#e90a0a" />
-            <Button mnemonicParsing="false" onAction="#AddHbox" text="Fill Row Table">
+            <Button mnemonicParsing="false" onAction="#AddHboxForMenPreference" text="Add Men Preference">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Button>
+            <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" onAction="#AddHboxForWomenPreference" text="Add Women Preference">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
             <Button fx:id="result" mnemonicParsing="false" onAction="#result" text="Show Gale-Shapley Result">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#showGale_shapley" text="GS" />
             <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Reset">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="changeScene" mnemonicParsing="false" onAction="#changeSceneMethod" text="Change Scene" />
          </children></VBox>
    </left>
    <center>
