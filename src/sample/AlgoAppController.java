@@ -1,16 +1,12 @@
 package sample;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
 import java.util.*;
 
 public class AlgoAppController {
@@ -21,130 +17,64 @@ public class AlgoAppController {
     private TextField char_number_of_row;
 
     @FXML
-    private Label show_error;
+    private Label show_error_one;
+    @FXML
+    private Label show_error_two;
 
     @FXML
-    private Label show_error2;
-
+    private VBox myVBox;
+    @FXML
+    private Button result;
+    @FXML
+    private Button reset;
+    @FXML
+    private Button changeScene;
 
     private int int_number_of_column;
     private int int_number_of_row;
+    private int countNumberOfButtonPressed_menPref=0;
+    private int countNumberOfButtonPressed_womenPref=0;
+    private int resultShowCounter=0;
 
-    @FXML
-    AnchorPane myAnchorPane;
-    @FXML
-    VBox myVBox1;
-    @FXML
-    HBox myHBox1;
-    @FXML
-    HBox myHBox2;
-    @FXML
-    HBox myHBox3;
-    @FXML
-    HBox myHBox4;
-    @FXML
-    HBox myHBox5;
-    @FXML
-    HBox myHBox6;
-    @FXML
-    HBox myHBox7;
-    @FXML
-    HBox myHBox8;
-    @FXML
-    HBox myHBox9;
-    @FXML
-    HBox myHBox10;
-    @FXML
-    HBox myHBox11;
-    @FXML
-    HBox myHBox12;
-    @FXML
-    HBox myHBox13;
-    @FXML
-    HBox myHBox14;
-    @FXML
-    HBox myHBox15;
-    @FXML
-    Button addRow;
-    @FXML
-    Button addColumn;
+    private TextField [][] menPrefTextFieldArray;
+    private TextField [][] womenPrefTextFieldArray;
 
-    @FXML
-    Button deleteRow;
-    @FXML
-    Button deleteColumn;
-
-    @FXML
-    Button result;
-    @FXML
-    Button reset;
-
-    @FXML
-    Button changeScene;
-
-    int i=0;
-    int menCounter=0;
-    int womenCounter=0;
-    int resultShowCounter=0;
-
-    //MenPreference
-    TextField [][] menTextFieldArray;
-    //Women textfield
-    TextField [][] womenTextFieldArray;
-
-
-
-
-
-    private int N, engagedCount;
-
-    private String[][] menPref;
-
-    private String[][] womenPref;
-
-    private String[] men;
-
-    private String[] women;
-
-    private String[] womenPartner;
-
-    private boolean[] menEngaged;
 
     public void AddHboxForMenPreference(ActionEvent actionEvent) {
 
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
-            show_error.setText("fill column and row");
+            show_error_one.setText("Enter number of men and women");
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
-        menCounter++;
-        if(menCounter>1){
-            show_error2.setText("Ii is Max");
+        countNumberOfButtonPressed_menPref++;
+        if(countNumberOfButtonPressed_menPref>1){
+            show_error_two.setText("Men Preference Entered");
             return;
         }
 
         if(int_number_of_column !=int_number_of_row){
-            show_error.setText("Row and Column must be equal");
+            show_error_one.setText("Number of Men and Women must be equal");
             return;
         }
-        show_error.setText("");
-        menTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
+        show_error_one.setText("");
+        menPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
             for (int j = 0; j <= int_number_of_row; j++) {
-                menTextFieldArray[i][j] = new TextField();
+                menPrefTextFieldArray[i][j] = new TextField();
                 int countMen=i+1;
                 if (j == 0) {
-                    menTextFieldArray[i][j].setPromptText(" Man " + countMen);
+                    menPrefTextFieldArray[i][j].setPromptText(" Man " + countMen);
                 } else {
-                    menTextFieldArray[i][j].setPromptText(j + " Rank Woman");
+                    menPrefTextFieldArray[i][j].setPromptText(j + " Rank Woman");
                 }
-                hb.getChildren().add(menTextFieldArray[i][j]);
+                hb.getChildren().add(menPrefTextFieldArray[i][j]);
 
             }
-            myVBox1.getChildren().add(hb);
+            myVBox.getChildren().add(hb);
 
         }
     }
@@ -153,37 +83,37 @@ public class AlgoAppController {
 
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
-            show_error.setText("fill column and row");
+            show_error_one.setText("Enter number of men and women");
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
-        womenCounter++;
-        if(womenCounter>1){
-            show_error2.setText("Ii is Max");
+        countNumberOfButtonPressed_womenPref++;
+        if(countNumberOfButtonPressed_womenPref>1){
+            show_error_two.setText("Women Preference Entered");
             return;
         }
 
         if(int_number_of_column !=int_number_of_row){
-            show_error.setText("Row and Column must be equal");
+            show_error_one.setText("Number of Men and Women must be equal");
             return;
         }
-        show_error.setText("");
-        womenTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
+        show_error_one.setText("");
+        womenPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
             for (int j = 0; j <= int_number_of_row; j++) {
-                womenTextFieldArray[i][j] = new TextField();
+                womenPrefTextFieldArray[i][j] = new TextField();
                 int countMen=i+1;
                 if (j == 0) {
-                    womenTextFieldArray[i][j].setPromptText(" Woman " + countMen);
+                    womenPrefTextFieldArray[i][j].setPromptText(" Woman " + countMen);
                 } else {
-                    womenTextFieldArray[i][j].setPromptText(j + " Rank Man");
+                    womenPrefTextFieldArray[i][j].setPromptText(j + " Rank Man");
                 }
-                hb.getChildren().add(womenTextFieldArray[i][j]);
+                hb.getChildren().add(womenPrefTextFieldArray[i][j]);
 
             }
-            myVBox1.getChildren().add(hb);
+            myVBox.getChildren().add(hb);
         }
     }
     public void result(ActionEvent actionEvent){
@@ -209,65 +139,71 @@ public class AlgoAppController {
 
                 hb.getChildren().addAll(textFiled_one,textFiled_two);
 
-            myVBox1.getChildren().add(hb);
+            myVBox.getChildren().add(hb);
         }
 
-    }
-    public void showGale_shapley2(ActionEvent actionEvent){
-
-        menPref= new String[int_number_of_row][int_number_of_column];
-        for(int i=0; i<myVBox1.getChildren().size();i++){
-            ObservableList<Node> childsHB = myVBox1.getChildren();
-            HBox hb = (HBox)childsHB.get(i);
-            int colCounter=0;
-            for(int j=0; j<hb.getChildren().size();j++){
-                TextField tf = (TextField)childsHB.get(j);
-                menPref[i][colCounter]=tf.getText();
-                System.out.println( "Men"+menPref[i][colCounter] );
-                colCounter++;
-            }
-        }
-       // GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
-       // gs.calcMatches();
     }
     public void showGale_shapley(ActionEvent actionEvent){
-        menPref= new String[int_number_of_row][int_number_of_column];
-        men=new String[int_number_of_row];
-        womenPref= new String[int_number_of_row][int_number_of_column];
-        women=new String[int_number_of_row];
+        String[][] menPref = new String[int_number_of_row][int_number_of_column];
+        String[] men = new String[int_number_of_row];
+        String[][] womenPref = new String[int_number_of_row][int_number_of_column];
+        String[] women = new String[int_number_of_row];
 
         int countMen =0;
         int countWomen=0;
+        if(menPrefTextFieldArray==null || menPrefTextFieldArray.length==0) {
+            show_error_two.setText("Please enter man preference");
+            return;
+        }
+        else {
+            for(int i=0; i<menPrefTextFieldArray.length;i++){
+                for(int j=0; j<menPrefTextFieldArray[0].length;j++) {
+                    if(menPrefTextFieldArray[i][j].getText().isBlank()){
+                        show_error_two.setText("Please enter all man preference");
+                        return;
+                    }
+                    else {
+                        if (j == 0) {
+                            men[countMen] = menPrefTextFieldArray[i][j].getText();
+                            System.out.println("Men " + menPrefTextFieldArray[i][j].getText());
+                            countMen++;
+                        }
+                        else {
+                            menPref[i][j - 1] = menPrefTextFieldArray[i][j].getText();
+                            System.out.println("table " + menPrefTextFieldArray[i][j].getText());
+                            //countWomen++;
+                        }
+                    }
+                }
+            }
 
-        //textFieldArray= new TextField [int_number_of_row][int_number_of_column];
-        for(int i=0; i<menTextFieldArray.length;i++){
-            for(int j=0; j<menTextFieldArray[0].length;j++) {
-                if (j == 0) {
-                    men[countMen] = menTextFieldArray[i][j].getText();
-                    System.out.println("Men " + menTextFieldArray[i][j].getText());
-                    countMen++;
-                } else {
-                    menPref[i][j - 1] = menTextFieldArray[i][j].getText();
-                    System.out.println("table " + menTextFieldArray[i][j].getText());
-                    //countWomen++;
+        }
+        if(womenPrefTextFieldArray==null || womenPrefTextFieldArray.length==0){
+            show_error_two.setText("Please enter Women preference");
+            return;
+        }
+        else {
+            for(int i=0; i<womenPrefTextFieldArray.length;i++){
+                for(int j=0; j<womenPrefTextFieldArray[0].length;j++) {
+                    if(womenPrefTextFieldArray[i][j].getText().isBlank()){
+                        show_error_two.setText("Please enter all Woman preference");
+                        return;
+                    }
+                    else {
+                        if (j == 0) {
+                            women[countWomen] = womenPrefTextFieldArray[i][j].getText();
+                            countWomen++;
+                        }
+                        else {
+                            womenPref[i][j - 1] = womenPrefTextFieldArray[i][j].getText();
+                        }
+                    }
                 }
             }
         }
-        for(int i=0; i<womenTextFieldArray.length;i++){
-            for(int j=0; j<womenTextFieldArray[0].length;j++) {
-                if (j == 0) {
-                    women[countWomen] = womenTextFieldArray[i][j].getText();
-                    System.out.println("Women " + womenTextFieldArray[i][j].getText());
-                    countWomen++;
-                } else {
-                    womenPref[i][j - 1] = womenTextFieldArray[i][j].getText();
-                    System.out.println("table " + womenTextFieldArray[i][j].getText());
-                    //countWomen++;
-                }
-            }
-        }
-         GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
+         GaleShapley gs= new GaleShapley(men, women, menPref, womenPref);
          gs.calcMatches();
+         show_error_two.setText("");
     }
     public HashMap<String, String> map(){
 
@@ -284,77 +220,15 @@ public class AlgoAppController {
      return  hmap;
     }
     public void reset (){
-        myVBox1.getChildren().clear();
+        myVBox.getChildren().clear();
         resultShowCounter=0;
-        menCounter=0;
-        womenCounter=0;
+        countNumberOfButtonPressed_menPref=0;
+        countNumberOfButtonPressed_womenPref=0;
     }
 //    public void changeSceneMethod(){
 //        Stage stage =new Stage();
 //        FirstGUI gu=new FirstGUI();
 //        gu.start(stage);
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void addRow1(ActionEvent actionEvent) {
-        myHBox1.getChildren().add(new TextField());
-    }
-    public void addRow2(ActionEvent actionEvent) {
-        myHBox2.getChildren().add(new TextField());
-    }
-    public void addRow3(ActionEvent actionEvent) {
-        myHBox3.getChildren().add(new TextField());
-    }
-    public void addRow4(ActionEvent actionEvent) {
-        myHBox4.getChildren().add(new TextField());
-    }
-    public void addRow5(ActionEvent actionEvent) {
-        myHBox5.getChildren().add(new TextField());
-    }
-    public void addRow6(ActionEvent actionEvent) {
-        myHBox6.getChildren().add(new TextField());
-    }
-    public void addRow7(ActionEvent actionEvent) {
-        myHBox7.getChildren().add(new TextField());
-    }
-    public void addRow8(ActionEvent actionEvent) {
-        myHBox8.getChildren().add(new TextField());
-    }
-    public void addRow9(ActionEvent actionEvent) {
-        myHBox9.getChildren().add(new TextField());
-    }
-    public void addRow10(ActionEvent actionEvent) {
-        myHBox10.getChildren().add(new TextField());
-    }
-    public void addRow11(ActionEvent actionEvent) {
-        myHBox11.getChildren().add(new TextField());
-    }
-    public void addRow12(ActionEvent actionEvent) {
-        myHBox12.getChildren().add(new TextField());
-    }
-    public void addRow13(ActionEvent actionEvent) {
-        myHBox13.getChildren().add(new TextField());
-    }
-    public void addRow14(ActionEvent actionEvent) {
-        myHBox14.getChildren().add(new TextField());
-    }
-    public void addRow15(ActionEvent actionEvent) {
-        myHBox15.getChildren().add(new TextField());
-    }
 
 }

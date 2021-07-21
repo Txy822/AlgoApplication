@@ -40,7 +40,10 @@
     <bottom>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="show_error2" prefHeight="17.0" prefWidth="123.0" textFill="#f00303" />
+                <Label fx:id="show_error_two" prefHeight="17.0" prefWidth="442.0" textFill="#f00303">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
             </children>
             <padding>
                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -50,61 +53,44 @@
    <left>
       <VBox prefHeight="629.0" prefWidth="167.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="char_number_of_column" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
+            <TextField fx:id="char_number_of_row" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
                <VBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin></TextField>
-            <TextField fx:id="char_number_of_row" prefHeight="26.0" prefWidth="167.0" promptText="Enter number of Women">
+            <TextField fx:id="char_number_of_column" prefHeight="26.0" prefWidth="167.0" promptText="Enter number of Women">
                <VBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin></TextField>
-            <Label fx:id="show_error" prefHeight="21.0" prefWidth="174.0" textFill="#e90a0a" />
+            <Label fx:id="show_error_one" prefHeight="21.0" prefWidth="174.0" textFill="#e90a0a" />
             <Button mnemonicParsing="false" onAction="#AddHboxForMenPreference" text="Add Men Preference">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin></Button>
             <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" onAction="#AddHboxForWomenPreference" text="Add Women Preference">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="result" mnemonicParsing="false" onAction="#result" text="Show Gale-Shapley Result">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#showGale_shapley" text="GS" />
+            <Button mnemonicParsing="false" onAction="#showGale_shapley" text="GS">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Button>
             <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Reset">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="changeScene" mnemonicParsing="false"  text="Change Scene" />
+            <Button fx:id="changeScene" mnemonicParsing="false" text="Change Scene">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Button>
          </children></VBox>
    </left>
    <center>
-      <VBox fx:id="myVBox1" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label prefHeight="35.0" prefWidth="526.0" text="Please enter in order of  1st Rank, 2nd Rank-------------------------------------------Last Rank" />
-            <HBox fx:id="myHBox1" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox2" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="400.0">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
-            <HBox fx:id="myHBox3" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox4" layoutX="10.0" layoutY="102.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox5" layoutX="10.0" layoutY="148.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox6" layoutX="10.0" layoutY="194.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox7" layoutX="10.0" layoutY="240.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox8" layoutX="10.0" layoutY="303.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox9" layoutX="10.0" layoutY="349.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox10" layoutX="10.0" layoutY="395.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox11" layoutX="10.0" layoutY="441.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox12" layoutX="10.0" layoutY="487.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox13" layoutX="10.0" layoutY="533.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox14" layoutX="10.0" layoutY="579.0" prefHeight="46.0" prefWidth="400.0" />
-            <HBox fx:id="myHBox15" layoutX="10.0" layoutY="595.0" prefHeight="46.0" prefWidth="400.0" />
-         </children>
-      </VBox>
+      <VBox fx:id="myVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
