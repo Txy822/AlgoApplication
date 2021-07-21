@@ -183,65 +183,10 @@ public class GaleShapley
 
     public HashMap<String, String> men_women_match() {
         HashMap<String, String> hmap = new HashMap<String, String>();
-//
-//            /*Adding elements to HashMap*/
-//            hmap.put("me1", "Chaitanya");
-//            hmap.put("m2", "Rahul");
-//            hmap.put("m3", "Singh");
-//            hmap.put("me4", "Ajeet");
-//            hmap.put("m5", "Anuj");
          for (int i = 0; i < N; i++){
             hmap.put(womenPartner[i],women[i]);
          }
          return hmap;
     }
-
-//    /** main function **/
-//
-//    public static void main(String[] args)
-//
-//    {
-//
-//        System.out.println("Gale Shapley Marriage Algorithm\n");
-//
-//        /** list of men **/
-//
-//        String[] m = {"M1", "M2", "M3", "M4", "M5"};
-//
-//        /** list of women **/
-//
-//        String[] w = {"W1", "W2", "W3", "W4", "W5"};
-//
-//
-//
-//        /** men preference **/
-//
-//        String[][] mp = {{"W5", "W2", "W3", "W4", "W1"},
-//
-//                {"W2", "W5", "W1", "W3", "W4"},
-//
-//                {"W4", "W3", "W2", "W1", "W5"},
-//
-//                {"W1", "W2", "W3", "W4", "W5"},
-//
-//                {"W5", "W2", "W3", "W4", "W1"}};
-//
-//        /** women preference **/
-//
-//        String[][] wp = {{"M5", "M3", "M4", "M1", "M2"},
-//
-//                {"M1", "M2", "M3", "M5", "M4"},
-//
-//                {"M4", "M5", "M3", "M2", "M1"},
-//
-//                {"M5", "M2", "M1", "M4", "M3"},
-//
-//                {"M2", "M1", "M4", "M3", "M5"}};
-//
-//
-//
-//        GaleShapley gs = new GaleShapley(m, w, mp, wp);
-//
-//    }
 
 }

@@ -125,8 +125,6 @@ public class AlgoAppController {
         if(resultShowCounter>1){
             return;
         }
-        //HashMap<String, String> map=map();
-
         Set<Map.Entry<String, String>> set = map.entrySet();
 
         Iterator<Map.Entry<String, String>> iterator = set.iterator();
@@ -144,7 +142,6 @@ public class AlgoAppController {
 
             myVBox.getChildren().add(hb);
         }
-
     }
     public void showGale_shapley(){
         String[][] menPref = new String[int_number_of_row][int_number_of_column];
@@ -204,20 +201,6 @@ public class AlgoAppController {
          gs.calcMatches();
          result(gs.men_women_match());;
          show_error_two.setText("");
-    }
-    public HashMap<String, String> map(){
-
-        /* This is how to declare HashMap */
-        HashMap<String, String> hmap = new HashMap<String, String>();
-
-        /*Adding elements to HashMap*/
-        hmap.put("me1", "Chaitanya");
-        hmap.put("m2", "Rahul");
-        hmap.put("m3", "Singh");
-        hmap.put("me4", "Ajeet");
-        hmap.put("m5", "Anuj");
-
-     return  hmap;
     }
     public void reset (){
         myVBox.getChildren().clear();
