@@ -1,7 +1,9 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -94,6 +96,11 @@ public class AlgoAppController {
     int womenCounter=0;
     int resultShowCounter=0;
 
+    //MenPreference
+    TextField [][] menTextFieldArray;
+    //Women textfield
+    TextField [][] womenTextFieldArray;
+
 
 
 
@@ -132,30 +139,25 @@ public class AlgoAppController {
             return;
         }
         show_error.setText("");
-        menPref= new String[int_number_of_row][int_number_of_column];
-        men=new String[int_number_of_row];
+        menTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
-            int columnCounter=0;
             for (int j = 0; j <= int_number_of_row; j++) {
-                TextField txtFiled = new TextField();
+                menTextFieldArray[i][j] = new TextField();
                 int countMen=i+1;
                 if (j == 0) {
-                    txtFiled.setPromptText(" Man " + countMen);
-                    hb.getChildren().add(txtFiled);
-                    men[i]=txtFiled.getText();
+                    menTextFieldArray[i][j].setPromptText(" Man " + countMen);
                 } else {
-                    txtFiled.setPromptText(j + " Rank Woman");
-                    hb.getChildren().add(txtFiled);
-                    menPref[i][columnCounter] = txtFiled.getText();
-                    columnCounter++;
+                    menTextFieldArray[i][j].setPromptText(j + " Rank Woman");
                 }
+                hb.getChildren().add(menTextFieldArray[i][j]);
 
             }
             myVBox1.getChildren().add(hb);
 
         }
     }
+
     public void AddHboxForWomenPreference(ActionEvent actionEvent) {
 
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
@@ -176,28 +178,21 @@ public class AlgoAppController {
             return;
         }
         show_error.setText("");
-        womenPref= new String[int_number_of_row][int_number_of_column];
-        women=new String[int_number_of_row];
+        womenTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
-            HBox hb = new HBox();
-            int columnCounter = 0;
+            HBox hb= new HBox();
             for (int j = 0; j <= int_number_of_row; j++) {
-                TextField txtFiled = new TextField();
-                int countMen = i + 1;
+                womenTextFieldArray[i][j] = new TextField();
+                int countMen=i+1;
                 if (j == 0) {
-                    txtFiled.setPromptText(" Woman " + countMen);
-                    hb.getChildren().add(txtFiled);
-                    women[i] = txtFiled.getText();
+                    womenTextFieldArray[i][j].setPromptText(" Woman " + countMen);
                 } else {
-                    txtFiled.setPromptText(j + " Rank Man");
-
-                    hb.getChildren().add(txtFiled);
-                    womenPref[i][columnCounter] = txtFiled.getText();
-                    columnCounter++;
+                    womenTextFieldArray[i][j].setPromptText(j + " Rank Man");
                 }
+                hb.getChildren().add(womenTextFieldArray[i][j]);
+
             }
             myVBox1.getChildren().add(hb);
-
         }
     }
     public void result(ActionEvent actionEvent){
@@ -226,11 +221,62 @@ public class AlgoAppController {
             myVBox1.getChildren().add(hb);
         }
 
+    }
+    public void showGale_shapley2(ActionEvent actionEvent){
 
+        menPref= new String[int_number_of_row][int_number_of_column];
+        for(int i=0; i<myVBox1.getChildren().size();i++){
+            ObservableList<Node> childsHB = myVBox1.getChildren();
+            HBox hb = (HBox)childsHB.get(i);
+            int colCounter=0;
+            for(int j=0; j<hb.getChildren().size();j++){
+                TextField tf = (TextField)childsHB.get(j);
+                menPref[i][colCounter]=tf.getText();
+                System.out.println( "Men"+menPref[i][colCounter] );
+                colCounter++;
+            }
+        }
+       // GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
+       // gs.calcMatches();
     }
     public void showGale_shapley(ActionEvent actionEvent){
-        GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
-        gs.calcMatches();
+        menPref= new String[int_number_of_row][int_number_of_column];
+        men=new String[int_number_of_row];
+        womenPref= new String[int_number_of_row][int_number_of_column];
+        women=new String[int_number_of_row];
+
+        int countMen =0;
+        int countWomen=0;
+
+        //textFieldArray= new TextField [int_number_of_row][int_number_of_column];
+        for(int i=0; i<menTextFieldArray.length;i++){
+            for(int j=0; j<menTextFieldArray[0].length;j++) {
+                if (j == 0) {
+                    men[countMen] = menTextFieldArray[i][j].getText();
+                    System.out.println("Men " + menTextFieldArray[i][j].getText());
+                    countMen++;
+                } else {
+                    menPref[i][j - 1] = menTextFieldArray[i][j].getText();
+                    System.out.println("table " + menTextFieldArray[i][j].getText());
+                    //countWomen++;
+                }
+            }
+        }
+        for(int i=0; i<womenTextFieldArray.length;i++){
+            for(int j=0; j<womenTextFieldArray[0].length;j++) {
+                if (j == 0) {
+                    women[countWomen] = womenTextFieldArray[i][j].getText();
+                    System.out.println("Women " + womenTextFieldArray[i][j].getText());
+                    countWomen++;
+                } else {
+                    womenPref[i][j - 1] = womenTextFieldArray[i][j].getText();
+                    System.out.println("table " + womenTextFieldArray[i][j].getText());
+                    //countWomen++;
+                }
+            }
+        }
+         GaleShapley gs= new GaleShapley(men,women,menPref,womenPref);
+         gs.calcMatches();
     }
     public HashMap<String, String> map(){
 
@@ -252,11 +298,28 @@ public class AlgoAppController {
         menCounter=0;
         womenCounter=0;
     }
-    public void changeSceneMethod(){
-        Stage stage =new Stage();
-        FirstGUI gu=new FirstGUI();
-        gu.start(stage);
-    }
+//    public void changeSceneMethod(){
+//        Stage stage =new Stage();
+//        FirstGUI gu=new FirstGUI();
+//        gu.start(stage);
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void addRow1(ActionEvent actionEvent) {
         myHBox1.getChildren().add(new TextField());
     }

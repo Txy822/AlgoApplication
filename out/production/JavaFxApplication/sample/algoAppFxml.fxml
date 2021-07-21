@@ -78,7 +78,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="changeScene" mnemonicParsing="false" onAction="#changeSceneMethod" text="Change Scene" />
+            <Button fx:id="changeScene" mnemonicParsing="false"  text="Change Scene" />
          </children></VBox>
    </left>
    <center>
