@@ -58,7 +58,7 @@
   <left>
     <VBox prefHeight="596.0" prefWidth="172.0" BorderPane.alignment="CENTER">
       <children>
-            <Button mnemonicParsing="false" onAction="#changeSceneBackHome" text="Back">
+            <Button fx:id="changeSceneBackHome" mnemonicParsing="false" onAction="#changeSceneBackHome" text="Back">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>

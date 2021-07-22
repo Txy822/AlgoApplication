@@ -14,31 +14,42 @@ public class AlgoAppMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("AlgoApp");
-        Pane myPane2 = (Pane)FXMLLoader.load(getClass().getResource
+        Pane myPaneAlgo = (Pane)FXMLLoader.load(getClass().getResource
                 ("algoAppFxml.fxml"));
-        Pane myPane = (Pane)FXMLLoader.load(getClass().getResource
+        Pane myPaneGaleShapley = (Pane)FXMLLoader.load(getClass().getResource
                 ("galeShapley.fxml"));
-        Scene myScene1 = new Scene(myPane);
-        Scene myScene21 = new Scene(myPane2);
+        Pane myPaneHome = (Pane)FXMLLoader.load(getClass().getResource
+                ("Home.fxml"));
+        Scene mySceneAlgo = new Scene(myPaneAlgo);
+        Scene mySceneGaleShapley = new Scene(myPaneGaleShapley);
+
         Button back = new Button("Back ..");
         back.setPrefWidth(100.0);
         back.setPrefHeight(100.0);
         Button forth = new Button(".. forth.");
         forth.setPrefWidth(100.0);
         forth.setPrefHeight(100.0);
+        Button galeShapleyButton = new Button(".. GaleShapley.");
+        galeShapleyButton.setPrefWidth(100.0);
+        galeShapleyButton.setPrefHeight(100.0);
+        Button weightedIntervalSchedulingButton = new Button(".. weightedIntervalScheduling.");
+        weightedIntervalSchedulingButton.setPrefWidth(100.0);
+        weightedIntervalSchedulingButton.setPrefHeight(100.0);
 
 
-        Scene myScene = new Scene(back);
-        Scene myScene2 = new Scene(forth);
-        back.setOnAction(actionEvent -> primaryStage.setScene(myScene2)
-        );
-
-            forth.setOnAction(actionEvent -> primaryStage.setScene(myScene21)
-            );
+        Scene mySceneBack = new Scene(back);
+        Scene mySceneForth = new Scene(forth);
+        Scene galeShapleyScene = new Scene(galeShapleyButton);
+        Scene weightedIntervalSchedulingScene = new Scene(weightedIntervalSchedulingButton);
 
 
-        myScene.setCursor(Cursor.CROSSHAIR);
-        primaryStage.setScene(myScene);
+        back.setOnAction(actionEvent -> primaryStage.setScene(mySceneBack));
+        forth.setOnAction(actionEvent -> primaryStage.setScene(mySceneGaleShapley));
+        galeShapleyButton.setOnAction(actionEvent -> primaryStage.setScene(galeShapleyScene));
+        weightedIntervalSchedulingButton.setOnAction(actionEvent -> primaryStage.setScene(weightedIntervalSchedulingScene));
+
+        mySceneForth.setCursor(Cursor.CROSSHAIR);
+        primaryStage.setScene(mySceneForth);
         primaryStage.show();
     }
 

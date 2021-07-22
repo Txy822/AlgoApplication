@@ -103,7 +103,7 @@
                            <textFill>
                       <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                            </textFill></Label>
-                        <Button layoutX="160.0" layoutY="114.0" mnemonicParsing="false" text="Galeshapley" />
+                        <Button layoutX="160.0" layoutY="114.0" mnemonicParsing="false" onAction="#BackchangeSceneBack" text="Galeshapley" />
                         <Button layoutX="156.0" layoutY="155.0" mnemonicParsing="false" text="Weighted Interval Scheduling" />
               </children>
             </AnchorPane>

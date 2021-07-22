@@ -1,11 +1,9 @@
 package sample;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -22,7 +20,7 @@ import java.util.Set;
 
 import static javafx.fxml.FXMLLoader.load;
 
-public class GaleShapleyController {
+public class HomeController {
 
     @FXML
     private TextField char_number_of_column;
@@ -41,9 +39,8 @@ public class GaleShapleyController {
 //    private Button result;
 //    @FXML
 //    private Button reset;
-
-    @FXML
-    private Button changeSceneBackHome;
+//    @FXML
+//    private Button changeScene;
 
     private int int_number_of_column;
     private int int_number_of_row;
@@ -284,13 +281,12 @@ public class GaleShapleyController {
         countNumberOfButtonPressed_menPref=0;
         countNumberOfButtonPressed_womenPref=0;
     }
-    public void changeSceneBackHome() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+
+    public void changeSceneBack() throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("GaleShapley.fxml"));
         Stage sg =new Stage();
-        sg.setTitle("Home");
         sg.setScene(new Scene(root));
 
         sg.show();
-        System.out.println("me");
     }
 }
