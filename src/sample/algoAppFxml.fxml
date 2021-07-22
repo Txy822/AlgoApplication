@@ -58,6 +58,11 @@
    <left>
       <VBox prefHeight="596.0" prefWidth="172.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false"  text="Back">
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </Button>
             <TextField fx:id="char_number_of_row" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
@@ -88,10 +93,6 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="changeScene" mnemonicParsing="false" text="Change Scene">
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin></Button>
          </children></VBox>
    </left>
    <center>

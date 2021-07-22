@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GaleShapleyController">
+  <top>
+    <VBox BorderPane.alignment="CENTER">
+      <children>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </children>
+    </VBox>
+  </top>
+  <bottom>
+    <HBox BorderPane.alignment="CENTER">
+      <children>
+        <Label fx:id="show_error_two" prefHeight="50.0" prefWidth="549.0" textFill="#f00303">
+          <HBox.margin>
+            <Insets left="30.0" />
+          </HBox.margin>
+          <font>
+            <Font size="27.0" />
+          </font></Label>
+      </children>
+      <padding>
+        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+      </padding>
+    </HBox>
+  </bottom>
+  <left>
+    <VBox prefHeight="596.0" prefWidth="172.0" BorderPane.alignment="CENTER">
+      <children>
+            <Button mnemonicParsing="false" onAction="#changeSceneBackHome" text="Back">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+        <TextField fx:id="char_number_of_row" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin></TextField>
+        <TextField fx:id="char_number_of_column" prefHeight="26.0" prefWidth="167.0" promptText="Enter number of Women">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin></TextField>
+        <Button mnemonicParsing="false" onAction="#AddHboxForMenPreference" text="Add Men Preference">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin></Button>
+        <Button layoutX="10.0" layoutY="93.0" mnemonicParsing="false" onAction="#AddHboxForWomenPreference" text="Add Women Preference">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin>
+        </Button>
+        <Button mnemonicParsing="false" text="Show Gale-Shapley Result">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin></Button>
+        <Button mnemonicParsing="false" onAction="#showGale_shapley" text="GS">
+          <VBox.margin>
+            <Insets left="10.0" />
+          </VBox.margin></Button>
+        <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Reset">
+          <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+          </VBox.margin>
+        </Button>
+        <Button fx:id="changeScene" mnemonicParsing="false" text="Change Scene">
+          <VBox.margin>
+            <Insets left="10.0" />
+          </VBox.margin></Button>
+      </children></VBox>
+  </left>
+  <center>
+    <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <content>
+        <VBox fx:id="myVBox" prefHeight="596.0" prefWidth="472.0" />
+      </content>
+    </ScrollPane>
+  </center>
+</BorderPane>

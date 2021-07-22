@@ -1,5 +1,6 @@
 package sample;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,14 +20,14 @@ import java.util.Set;
 
 import static javafx.fxml.FXMLLoader.load;
 
-public class AlgoAppController {
+public class GaleShapleyController {
 
     @FXML
     private TextField char_number_of_column;
     @FXML
     private TextField char_number_of_row;
 
-//    @FXML
+    //    @FXML
 //    private Label show_error_one;
     @FXML
     private Label show_error_two;
@@ -52,10 +53,10 @@ public class AlgoAppController {
     private TextField [][] menPrefTextFieldArray;
     private TextField [][] womenPrefTextFieldArray;
 
-/**
- *HBox to add Men Preferences in the GUI
- * returns void
- */
+    /**
+     *HBox to add Men Preferences in the GUI
+     * returns void
+     */
     public void AddHboxForMenPreference() {
         //check if the number of men and women input is empty
         //or not equal in size
@@ -163,18 +164,18 @@ public class AlgoAppController {
         Set<Map.Entry<String, String>> set = map.entrySet();
 
         Iterator<Map.Entry<String, String>> iterator = set.iterator();
-       Label gale_Shapley_label= new Label("The Match Result: ");
-       myVBox.getChildren().add(gale_Shapley_label);
+        Label gale_Shapley_label= new Label("The Match Result: ");
+        myVBox.getChildren().add(gale_Shapley_label);
         for(int i=0;i<map.size();i++){
             HBox hb= new HBox();
             Map.Entry mentry = (Map.Entry)iterator.next();
-                TextField textFiled_one= new TextField();
-                textFiled_one.setText(mentry.getKey().toString());
+            TextField textFiled_one= new TextField();
+            textFiled_one.setText(mentry.getKey().toString());
 
-                TextField textFiled_two= new TextField();
-                textFiled_two.setText(mentry.getValue().toString());
+            TextField textFiled_two= new TextField();
+            textFiled_two.setText(mentry.getValue().toString());
 
-                hb.getChildren().addAll(textFiled_one,textFiled_two);
+            hb.getChildren().addAll(textFiled_one,textFiled_two);
 
             myVBox.getChildren().add(hb);
         }
@@ -254,10 +255,10 @@ public class AlgoAppController {
             }
         }
         //display the match
-         gs= new GaleShapley(men, women, menPref, womenPref);
-         gs.calcMatches();
-         result(gs.men_women_match());;
-         show_error_two.setText("");
+        gs= new GaleShapley(men, women, menPref, womenPref);
+        gs.calcMatches();
+        result(gs.men_women_match());;
+        show_error_two.setText("");
     }
 
     /**
@@ -280,9 +281,8 @@ public class AlgoAppController {
         countNumberOfButtonPressed_menPref=0;
         countNumberOfButtonPressed_womenPref=0;
     }
-//    @FXML
-//    public void changeSceneBackHome(Stage s) throws Exception {
-//
-//        new AlgoAppMain().start(s);
-//    }
+    public void changeSceneBackHome() throws Exception {
+        Stage s =new Stage();
+        new Home();
+    }
 }
