@@ -74,6 +74,8 @@ public class AlgoAppController {
         show_error_two.setText("");
         //store the textField to access the variable of entries
         menPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
+        Label menPrefLabel= new Label("Men Preferences ");
+        myVBox.getChildren().add(menPrefLabel);
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
             for (int j = 0; j <= int_number_of_row; j++) {
@@ -121,6 +123,8 @@ public class AlgoAppController {
         show_error_two.setText("");
         //store the textField to access the variable of entries
         womenPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
+        Label womenPrefLabel= new Label("Women Preferences: ");
+        myVBox.getChildren().add(womenPrefLabel);
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
             for (int j = 0; j <= int_number_of_row; j++) {
@@ -151,7 +155,8 @@ public class AlgoAppController {
         Set<Map.Entry<String, String>> set = map.entrySet();
 
         Iterator<Map.Entry<String, String>> iterator = set.iterator();
-
+       Label gale_Shapley_label= new Label("The Match Result: ");
+       myVBox.getChildren().add(gale_Shapley_label);
         for(int i=0;i<map.size();i++){
             HBox hb= new HBox();
             Map.Entry mentry = (Map.Entry)iterator.next();
