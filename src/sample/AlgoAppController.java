@@ -44,27 +44,32 @@ public class AlgoAppController {
     private TextField [][] menPrefTextFieldArray;
     private TextField [][] womenPrefTextFieldArray;
 
-
+/**
+ *HBox to add Men Preferences in the GUI
+ * returns void
+ */
     public void AddHboxForMenPreference() {
-
-        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
+        //check if the number of men and women input is empty
+        //or not equal in size
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||int_number_of_row==1||int_number_of_column==1)
         {
             show_error_one.setText("Enter number of men and women");
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
+        //counting the number of the provided button press to avoid more entry of the table
         countNumberOfButtonPressed_menPref++;
         if(countNumberOfButtonPressed_menPref>1){
             show_error_two.setText("Men Preference Entered");
             return;
         }
-
         if(int_number_of_column !=int_number_of_row){
-            show_error_one.setText("Number of Men and Women must be equal");
+            show_error_one.setText("Number of Men and Women must be equal and greater than 1");
             return;
         }
         show_error_one.setText("");
+        //store the textField to access the variable of entries
         menPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
@@ -82,15 +87,21 @@ public class AlgoAppController {
         }
     }
 
+    /**
+     *HBox to add Women Preferences in the GUI
+     * returns void
+     */
     public void AddHboxForWomenPreference() {
-
-        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
+        //check if the number of men and women input is empty
+        //or not equal in size
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||int_number_of_row==1||int_number_of_column==1)
         {
             show_error_one.setText("Enter number of men and women");
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
         int_number_of_row=Integer.parseInt(char_number_of_row.getText());
+        //counting the number of the provided button press to avoid more entry of the table
         countNumberOfButtonPressed_womenPref++;
         if(countNumberOfButtonPressed_womenPref>1){
             show_error_two.setText("Women Preference Entered");
@@ -102,6 +113,7 @@ public class AlgoAppController {
             return;
         }
         show_error_one.setText("");
+        //store the textField to access the variable of entries
         womenPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
             HBox hb= new HBox();
@@ -118,13 +130,18 @@ public class AlgoAppController {
             myVBox.getChildren().add(hb);
         }
     }
+
+    /**
+     * Result: to display the result in GUI
+     * @param map
+     */
     @FXML
     public void result(HashMap<String, String> map){
 
         resultShowCounter++;
-        if(resultShowCounter>1){
-            return;
-        }
+//        if(resultShowCounter>1){
+//            return;
+//        }
         Set<Map.Entry<String, String>> set = map.entrySet();
 
         Iterator<Map.Entry<String, String>> iterator = set.iterator();
@@ -143,12 +160,26 @@ public class AlgoAppController {
             myVBox.getChildren().add(hb);
         }
     }
+
+    /**
+     * Gale-Shapley implementation and Display on GUI
+     */
     public void showGale_shapley(){
+        if(resultShowCounter>1){
+            show_error_two.setText("The match Table is shown already");
+            return;
+        }
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
+        {
+            show_error_one.setText("Enter number of men and women");
+            return;
+        }
         String[][] menPref = new String[int_number_of_row][int_number_of_column];
         String[] men = new String[int_number_of_row];
         String[][] womenPref = new String[int_number_of_row][int_number_of_column];
         String[] women = new String[int_number_of_row];
 
+        //To isolate the first column of the table for women preference and men preference table
         int countMen =0;
         int countWomen=0;
         if(menPrefTextFieldArray==null || menPrefTextFieldArray.length==0) {
@@ -197,12 +228,26 @@ public class AlgoAppController {
                 }
             }
         }
+        //display the match
          gs= new GaleShapley(men, women, menPref, womenPref);
          gs.calcMatches();
          result(gs.men_women_match());;
          show_error_two.setText("");
     }
-    public void reset (){
+
+    /**
+     * To reset all values for new entry
+     */
+    public void reset () {
+        if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||(int_number_of_column !=int_number_of_row))
+        {
+            show_error_one.setText("Enter Equal number of men and women");
+            char_number_of_row.clear();
+            char_number_of_column.clear();
+            return;
+        }
+        char_number_of_row.clear();
+        char_number_of_column.clear();
         myVBox.getChildren().clear();
         gs.men_women_match().clear();
         resultShowCounter=0;

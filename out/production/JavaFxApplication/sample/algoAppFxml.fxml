@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AlgoAppController">
     <top>
@@ -40,10 +41,13 @@
     <bottom>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="show_error_two" prefHeight="17.0" prefWidth="442.0" textFill="#f00303">
+                <Label fx:id="show_error_two" prefHeight="50.0" prefWidth="549.0" textFill="#f00303">
                <HBox.margin>
                   <Insets left="30.0" />
-               </HBox.margin></Label>
+               </HBox.margin>
+               <font>
+                  <Font size="27.0" />
+               </font></Label>
             </children>
             <padding>
                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -51,7 +55,7 @@
         </HBox>
     </bottom>
    <left>
-      <VBox prefHeight="629.0" prefWidth="167.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="629.0" prefWidth="194.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="char_number_of_row" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
                <VBox.margin>
@@ -61,7 +65,10 @@
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin></TextField>
-            <Label fx:id="show_error_one" prefHeight="21.0" prefWidth="174.0" textFill="#e90a0a" />
+            <Label fx:id="show_error_one" prefHeight="42.0" prefWidth="167.0" textFill="#e90a0a">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
             <Button mnemonicParsing="false" onAction="#AddHboxForMenPreference" text="Add Men Preference">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
@@ -91,6 +98,6 @@
          </children></VBox>
    </left>
    <center>
-      <VBox fx:id="myVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="myVBox" prefHeight="596.0" prefWidth="472.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
