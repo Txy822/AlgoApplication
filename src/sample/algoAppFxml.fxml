@@ -55,7 +55,7 @@
         </HBox>
     </bottom>
    <left>
-      <VBox prefHeight="629.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="596.0" prefWidth="172.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="char_number_of_row" prefHeight="19.0" prefWidth="40.0" promptText="Enter number of Men">
                <VBox.margin>
@@ -65,10 +65,6 @@
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin></TextField>
-            <Label fx:id="show_error_one" prefHeight="42.0" prefWidth="167.0" textFill="#e90a0a">
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin></Label>
             <Button mnemonicParsing="false" onAction="#AddHboxForMenPreference" text="Add Men Preference">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />

@@ -18,8 +18,8 @@ public class AlgoAppController {
     @FXML
     private TextField char_number_of_row;
 
-    @FXML
-    private Label show_error_one;
+//    @FXML
+//    private Label show_error_one;
     @FXML
     private Label show_error_two;
 
@@ -53,7 +53,8 @@ public class AlgoAppController {
         //or not equal in size
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||int_number_of_row==1||int_number_of_column==1)
         {
-            show_error_one.setText("Enter number of men and women");
+            show_error_two.setText("Enter number of men and women");
+            show_error_two.setWrapText(true);
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
@@ -62,13 +63,15 @@ public class AlgoAppController {
         countNumberOfButtonPressed_menPref++;
         if(countNumberOfButtonPressed_menPref>1){
             show_error_two.setText("Men Preference Entered");
+            show_error_two.setWrapText(true);
             return;
         }
         if(int_number_of_column !=int_number_of_row){
-            show_error_one.setText("Number of Men and Women must be equal and greater than 1");
+            show_error_two.setText("Number of Men and Women must be equal and greater than 1");
+            show_error_two.setWrapText(true);
             return;
         }
-        show_error_one.setText("");
+        show_error_two.setText("");
         //store the textField to access the variable of entries
         menPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
@@ -96,7 +99,8 @@ public class AlgoAppController {
         //or not equal in size
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||int_number_of_row==1||int_number_of_column==1)
         {
-            show_error_one.setText("Enter number of men and women");
+            show_error_two.setText("Enter number of men and women");
+            show_error_two.setWrapText(true);
             return;
         }
         int_number_of_column=Integer.parseInt(char_number_of_column.getText());
@@ -105,14 +109,16 @@ public class AlgoAppController {
         countNumberOfButtonPressed_womenPref++;
         if(countNumberOfButtonPressed_womenPref>1){
             show_error_two.setText("Women Preference Entered");
+            show_error_two.setWrapText(true);
             return;
         }
 
         if(int_number_of_column !=int_number_of_row){
-            show_error_one.setText("Number of Men and Women must be equal");
+            show_error_two.setText("Number of Men and Women must be equal");
+            show_error_two.setWrapText(true);
             return;
         }
-        show_error_one.setText("");
+        show_error_two.setText("");
         //store the textField to access the variable of entries
         womenPrefTextFieldArray= new TextField[int_number_of_row][int_number_of_column+1];
         for(int i=0;i<int_number_of_row;i++) {
@@ -167,11 +173,13 @@ public class AlgoAppController {
     public void showGale_shapley(){
         if(resultShowCounter>1){
             show_error_two.setText("The match Table is shown already");
+            show_error_two.setWrapText(true);
             return;
         }
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank())
         {
-            show_error_one.setText("Enter number of men and women");
+            show_error_two.setText("Enter number of men and women");
+            show_error_two.setWrapText(true);
             return;
         }
         String[][] menPref = new String[int_number_of_row][int_number_of_column];
@@ -184,6 +192,7 @@ public class AlgoAppController {
         int countWomen=0;
         if(menPrefTextFieldArray==null || menPrefTextFieldArray.length==0) {
             show_error_two.setText("Please enter man preference");
+            show_error_two.setWrapText(true);
             return;
         }
         else {
@@ -191,6 +200,7 @@ public class AlgoAppController {
                 for(int j=0; j<menPrefTextFieldArray[0].length;j++) {
                     if(menPrefTextFieldArray[i][j].getText().isBlank()){
                         show_error_two.setText("Please enter all man preference");
+                        show_error_two.setWrapText(true);
                         return;
                     }
                     else {
@@ -207,6 +217,7 @@ public class AlgoAppController {
         }
         if(womenPrefTextFieldArray==null || womenPrefTextFieldArray.length==0){
             show_error_two.setText("Please enter Women preference");
+            show_error_two.setWrapText(true);
             return;
         }
         else {
@@ -214,6 +225,7 @@ public class AlgoAppController {
                 for(int j=0; j<womenPrefTextFieldArray[0].length;j++) {
                     if(womenPrefTextFieldArray[i][j].getText().isBlank()){
                         show_error_two.setText("Please enter all Woman preference");
+                        show_error_two.setWrapText(true);
                         return;
                     }
                     else {
@@ -241,7 +253,8 @@ public class AlgoAppController {
     public void reset () {
         if(char_number_of_column.getText().isBlank() || char_number_of_row.getText().isBlank()||(int_number_of_column !=int_number_of_row))
         {
-            show_error_one.setText("Enter Equal number of men and women");
+            show_error_two.setText("Enter Equal number of men and women");
+            show_error_two.setWrapText(true);
             char_number_of_row.clear();
             char_number_of_column.clear();
             return;
