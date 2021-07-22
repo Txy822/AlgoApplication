@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ public class AlgoAppMain extends Application {
         Pane myPane = (Pane)FXMLLoader.load(getClass().getResource
                 ("algoAppFxml.fxml"));
         Scene myScene = new Scene(myPane);
+        myScene.setCursor(Cursor.CROSSHAIR);
         primaryStage.setScene(myScene);
         primaryStage.show();
     }
